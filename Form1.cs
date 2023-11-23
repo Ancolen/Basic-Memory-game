@@ -21,6 +21,7 @@ namespace Game
         Button first, second;
         int count = 0;
         int iconindex;
+        int wincount = 0;
         Random rnd = new Random();
         List<string> list = new List<string>()
         {
@@ -80,6 +81,9 @@ namespace Game
             {
                 first = null;
                 second = null;
+                wincount++;
+                if (wincount == 20)
+                    MessageBox.Show("You Are Win!");
             }
             else
             {
