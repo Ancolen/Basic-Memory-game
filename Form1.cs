@@ -20,6 +20,7 @@ namespace Game
 
         Button first, second;
         int count = 0;
+        int i = 0;
         int iconindex;
         int wincount = 0;
         Random rnd = new Random();
@@ -39,27 +40,28 @@ namespace Game
 
         private async void btn_start_Click(object sender, EventArgs e)
         {
-            Button btn;
-            foreach (Button item in Controls.OfType<Button>())
+            if (i == 0)
             {
-                if (item != btn_start)
+                foreach (Button item in Controls.OfType<Button>())
                 {
-                    btn = item as Button;
-                    iconindex = rnd.Next(list.Count);
-                    btn.Text = list[iconindex];
-                    list.RemoveAt(iconindex);
+                    if (item != btn_start)
+                    {
+                        iconindex = rnd.Next(list.Count);
+                        item.Text = list[iconindex];
+                        list.RemoveAt(iconindex);
+                    }
                 }
-            }
-            await Task.Delay(3000);
-
-            foreach (Button item in Controls.OfType<Button>())
-            {
-                if (item != btn_start)
+                await Task.Delay(3000);
+    
+                foreach (Button item in Controls.OfType<Button>())
                 {
-                    item.ForeColor = item.BackColor;
+                    if (item != btn_start)
+                    {
+                        item.ForeColor = item.BackColor;
+                    }
                 }
+                i++;
             }
-
         }
 
         private async void button_click(object sender, EventArgs e)
