@@ -20,9 +20,9 @@ namespace Game
 
         Button first, second;
         int count = 0;
+        int wincount = 0;
         int i = 0;
         int iconindex;
-        int wincount = 0;
         Random rnd = new Random();
         List<string> list = new List<string>()
         {
@@ -31,11 +31,6 @@ namespace Game
         };
         private void Form1_Load(object sender, EventArgs e)
         {
-            foreach (Button item in Controls.OfType<Button>())
-            {
-                if (item != btn_start)
-                    item.Text = "";
-            }
         }
 
         private async void btn_start_Click(object sender, EventArgs e)
@@ -52,7 +47,7 @@ namespace Game
                     }
                 }
                 await Task.Delay(3000);
-    
+
                 foreach (Button item in Controls.OfType<Button>())
                 {
                     if (item != btn_start)
